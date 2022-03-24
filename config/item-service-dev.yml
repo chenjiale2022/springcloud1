@@ -1,0 +1,24 @@
+#向注册中心注册的"服务ID"
+spring:
+  application:
+    name: item-service
+  #默认配置中心配置优先级高,配置中心配置会覆盖客户端的所有配置,包括命令行参数配置
+  cloud:
+    config:
+      override-none: true
+
+#商品：8001
+#用户：8101
+#订单：8201
+server:
+  port: 8001
+
+#defaultZone - 默认地点
+#如果使用云服务器，可以由服务商提供不同的地点的服务器
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+
+
+

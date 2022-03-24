@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: zuul
+  #默认配置中心配置优先级高,配置中心配置会覆盖客户端的所有配置,包括命令行参数配置
+  cloud:
+    config:
+      override-none: true
+
+server:
+  port: 3001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+
+#zuul 路由配置可以省略，缺省以服务 id 作为访问路径
+zuul:
+  routes:
+    item-service: /item-service/**
+    user-service: /user-service/**
+    order-service: /order-service/**
+  #开启ribbon重试
+  retryable: true
+  #zuul会过滤敏感http协议头，默认会过滤Cookie、Set-cookie、Authorization,设置不过滤：
+  #sensitive-headers:
+
+
+#zuul已经集成了ribbon，默认已经实现了负载均衡
+
+#配置ribbon重试参数
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 1000
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 1
+
+#降低 hystrix 超时时间，以便测试降级
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500
+
+#zuul已经包含actuator依赖
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
