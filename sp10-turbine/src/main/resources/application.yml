@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: turbin
+
+server:
+  port: 5001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+
+turbine:
+  #turbine聚合了order-service两台服务器的hystrix监控信息
+  #修改，聚合添加zuul服务器的监控信息
+  app-config: order-service,zuul
+  cluster-name-expression: new String("default")
+

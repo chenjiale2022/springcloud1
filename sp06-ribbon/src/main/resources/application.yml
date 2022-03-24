@@ -1,0 +1,22 @@
+# 06项目只是一个功能测试项目
+# 测试 ribbon hystrix的功能
+# 两个工具测试完之后，这个项目会删除
+spring:
+  application:
+    name: ribbon
+server:
+  port: 3001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+
+ribbon:
+  #单台服务器的重试次数
+  MaxAutoRetries: 1
+  #更换服务器次数
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+  #OkToRetryOnAllOperations 是否对所有类型请求都重试，默认只对GET重试
+  #ConnectTimeout 建立连接等待等待超时时间（不能再yml中配置，需要些Java代码进行配置）
+  #ReadTimeout 连接已建立并已发送请求，等待接收响应的超时时间（不能再yml中配置，需要些Java代码进行配置）
