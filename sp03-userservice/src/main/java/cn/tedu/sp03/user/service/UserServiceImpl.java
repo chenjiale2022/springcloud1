@@ -6,10 +6,12 @@ import cn.tedu.web.util.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RefreshScope
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
