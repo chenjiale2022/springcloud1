@@ -1,0 +1,14 @@
+#引导配置文件，先于application.yml加载
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: item-service
+      profile: dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
