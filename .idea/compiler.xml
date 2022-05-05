@@ -13,6 +13,7 @@
         <module name="sp11-zuul" />
         <module name="sp04-orderservice" />
         <module name="sp12-config" />
+        <module name="sp06-ribbon" />
         <module name="sp09-feign" />
         <module name="sp05-eureka" />
         <module name="sp08-hystrix-dashboard" />

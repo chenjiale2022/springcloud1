@@ -20,8 +20,10 @@ import cn.tedu.web.util.JsonResult;
 public class AccessFilter extends ZuulFilter{
     @Override
     public boolean shouldFilter() {
+        //判断该过滤器是否需要被执行
         //对指定的serviceid过滤，如果要过滤所有服务，直接返回 true
 
+        //这里是对item-service进行过滤
         RequestContext ctx = RequestContext.getCurrentContext();
         String serviceId = (String) ctx.get(FilterConstants.SERVICE_ID_KEY);
         if(serviceId.equals("item-service")) {
@@ -49,11 +51,14 @@ public class AccessFilter extends ZuulFilter{
 
     @Override
     public String filterType() {
+        //public static final java.lang.String PRE_TYPE = "pre";
+        //代表过滤器在请求被路由之前进行
         return FilterConstants.PRE_TYPE;
     }
 
     @Override
     public int filterOrder() {
+        //public static final int PRE_DECORATION_FILTER_ORDER = 5;
         //该过滤器顺序要 > 5，才能得到 serviceid
         return FilterConstants.PRE_DECORATION_FILTER_ORDER+1;
     }

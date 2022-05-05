@@ -23,7 +23,9 @@ public class Sp06RibbonApplication {
     public RestTemplate restTemplate() {
         SimpleClientHttpRequestFactory f = new SimpleClientHttpRequestFactory();
         //设置超时时间1s
+        //连接已建立并发送成功请求，等待响应时间的超时时间设置为1s
         f.setReadTimeout(1000);
+        //建立连接等待的超时时间设置为1s
         f.setConnectTimeout(1000);
         return new RestTemplate(f);
 

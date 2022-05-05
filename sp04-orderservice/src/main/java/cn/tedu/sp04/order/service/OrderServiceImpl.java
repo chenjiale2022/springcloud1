@@ -27,7 +27,11 @@ public class OrderServiceImpl implements OrderService {
         log.info("获取订单，orderId=" + orderId);
 
         // TODO: 远程调用商品，获取商品列表
+        //OrderController->OrderServoceImpl->
+        //通过itemFeignService远程调用(执行失败是调用降级方法itemFeignServiceFB)->
+        //itemController->itemServiceImpl
         JsonResult<List<Item>> items=itemService.getItems(orderId);
+
         // TODO：远程调用用户，获取用户数据
         JsonResult<User> user=userService.getUser(7);
 

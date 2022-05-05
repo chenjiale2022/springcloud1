@@ -97,4 +97,6 @@ public class RibbonController {
         return rt.getForObject("http://order-service/",
                 JsonResult.class);
     }
+
+
 }
