@@ -76,6 +76,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!--添加 sleuth 依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
 
     </dependencies>
 

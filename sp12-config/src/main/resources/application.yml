@@ -1,15 +1,27 @@
 spring:
   application:
     name: config-server
+  #必须配置 spring.profiles.active=native 来激活本地文件系统
+  profiles:
+    active: native
 
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/chenjiale2022/springcloud1.git
-          searchPaths: config
-          username: chenjiale2022
-          password: Cjl18634955081
+        native:
+          search-locations: classpath:/config
+        #git:
+          #uri: https://github.com/chenjiale2022/springcloud1.git
+          #searchPaths: config
+          #username: chenjiale2022
+          #password: Cjl18634955081
+
+  #添加rabbitmq连接信息
+  rabbitmq:
+    host: 192.168.64.140
+    port: 5672
+    username: admin
+    password: admin
 
 server:
   port: 6001
@@ -19,7 +31,6 @@ eureka:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
 
-#
 #暴露 bus-refresh 刷新端点
 management:
   endpoints:
